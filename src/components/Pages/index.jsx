@@ -73,9 +73,11 @@ const Pages = (props) => {
             setCur(value * 1);
         }
     }
+    
     // test
-    console.log('cur:', cur)
-    console.log('item:', items)
+    // console.log('cur:', cur)
+    // console.log('item:', items)
+
     return (
         <div className="pagination-ui">
             <a className={cur === 1 ? 'prev disable' : 'prev'} onClick={() => goPrev()}></a>
