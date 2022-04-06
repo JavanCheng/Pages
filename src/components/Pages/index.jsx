@@ -3,13 +3,15 @@ import './index.css'
 
 const Pages = (props) => {
     const total = props.total;
+    const pagerSize = props.pagerSize;
     let begin = 1;
     let len = total;
+    let mid = Math.floor(pagerSize / 2);
 
     const initState = () => {
         const init = [];
-        if (total > 5) {
-            len = 5;
+        if (total > pagerSize) {
+            len = pagerSize;
         }
         for (let i = 1; i <= len; i++) {
             init.push(i);
@@ -22,13 +24,13 @@ const Pages = (props) => {
     const [items, setItems] = useState(initState());
 
     useEffect(() => {
-        if (total > 5) {
-            if (cur >= (total - 2)) {
-                begin = total - 4;
+        if (total > pagerSize) {
+            if (cur >= (total - mid)) {
+                begin = total - pagerSize + 1;
             } else if (cur <= 3) {
                 begin = 1;
             } else {
-                begin = cur - 2;
+                begin = cur - mid;
             }
         }
         let temp = []
